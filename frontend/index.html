@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Data</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Socket.io Example</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container mt-5">
+    <div class="jumbotron">
+        <h1 class="display-4" id="Testing1">Socket.io Testing </h1>
+        <p class="lead" id="Testing2">This page is made for testing the event emits using socket.io</p>
+        <form id="inputForm">
+            <div class="form-group" id="Testing3">
+                <label for="inputValue">Enter a value:</label>
+                <input type="text" class="form-control" id="inputValue" placeholder="Enter value">
+            </div>
+            <button type="submit" class="btn btn-primary" id="Testing4">Submit</button>
+        </form>
+    </div>
+</div>
+<script>
+    var localStorageData = {
+        _id: '661f5eaeb4d8a7cebd146478',
+        name: 'TestingProject3',
+        seoName: 'testingproject39773',
+        uiFrameworkName: 'Bootstrap',
+        uiFrameworkVersion: '5.2',
+        apiDomainName: 'testingproject39773.api.webconnect.today',
+        constants: [
+            { key: 'constant1', value: 'value1' },
+            { key: 'constant2', value: 'value2' },
+            { key: 'constant3', value: 'value3' }
+        ],
+        createdAt: '2024-04-17T05:31:26.469Z',
+        dateFormat: 'YYYY-MM-DD',
+        description: '',
+        domainName: 'testingproject39773.webconnect.today',
+        enableCodeExport: true,
+        enableDevKey: false,
+        enableEncryption: false,
+        enablePWA: false,
+   
+    };
+
+    var Name = 'Abhijeet Rana';
+    var Email = 'abhijeet@rana.com';
+    var Project = 'SocketIO';
+    var IdNumber = 12345;
+
+    localStorage.setItem('name', Name);
+    localStorage.setItem('email', Email);
+    localStorage.setItem('Id', IdNumber);
+    localStorage.setItem('project', Project);
+    localStorage.setItem('LocalData', JSON.stringify(localStorageData));
+    sessionStorage.setItem('username', 'Abhijeet Rana');
+    sessionStorage.setItem('userEmail', 'Abhijeet@rana.com');
+    sessionStorage.setItem('cartItems', JSON.stringify(['item1', 'item2', 'item3']));
+    sessionStorage.setItem('lastVisitedPage', window.location.href);
+</script>
+    <script src="https://cdn.socket.io/4.3.1/socket.io.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

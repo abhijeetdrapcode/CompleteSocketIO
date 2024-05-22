@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Table</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+
+    th, td {
+        font-size: 14px;
+        border: 2px solid black !important; 
+    }
+    body{
+      background-color: lightblue;
+    }
+    .collapsible-content {
+      display: none;
+      padding: 10px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+    }
+    .collapsible-header {
+      cursor: pointer;
+      background-color: #f1f1f1;
+      padding: 10px;
+      font-size: 14px;
+    }
+    .collapsible-header:hover {
+      background-color: #ddd;
+    }
+    th, td {
+      font-size: 14px;
+    }
+    .details-scroll {
+      max-height: 200px; 
+      overflow-y: auto;
+    }
+    .details-scroll p {
+      margin-bottom: 5px; 
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="my-4" style="font-size: 34px; display: flex; justify-content: center;">CLICK EVENTS</h1> 
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Name</th>
+          <th>Click Event</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+         <!-- Data yaha par aayega table ka javascript ki help se -->
+      </tbody>
+    </table>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    function toggleCollapse(element) {
+      const detailsRow = element.parentNode.nextElementSibling;
+      if (detailsRow.style.display === 'none') {
+        detailsRow.style.display = 'table-row';
+        clearDetails(detailsRow);
+        renderDetailsRow(detailsRow);
+      } else {
+        detailsRow.style.display = 'none';
+      }
+    }
+
+    function clearDetails(detailsRow) {
+      const cardBody = detailsRow.querySelector('.card-body');
+      if (cardBody) {
+        cardBody.innerHTML = '';
+      }
+    }
+
+    function renderDetailsRow(detailsRow) {
+      const item = JSON.parse(detailsRow.dataset.item);
+      const cardBody = detailsRow.querySelector('.card-body');
+      Object.entries(item).forEach(([key, value]) => {
+        cardBody.innerHTML += `<p><strong>${key}:</strong> ${renderDetails(key, value)}</p>`;
+      });
+    }
+
+    function renderDetails(key, value) {
+      if (typeof value === 'object') {
+        let html = '';
+        Object.entries(value).forEach(([subKey, subValue]) => {
+          html += `<p><strong>${subKey}:</strong> ${renderDetails(subKey, subValue)}</p>`;
+        });
+        return html;
+      } else {
+        return JSON.stringify(value);
+      }
+    }
+
+    fetch('http://localhost:3000/data')
+      .then(response => response.json())
+      .then(data => {
+        const tableBody = document.getElementById('tableBody');
+        data.forEach(item => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${item.localStorageData.name}</td>
+            <td class="collapsible-header bg-dark text-light" onclick="toggleCollapse(this)">${item.eventName}</td>
+          `;
+          const detailsRow = document.createElement('tr');
+          detailsRow.classList.add('collapsible-content');
+          detailsRow.dataset.item = JSON.stringify(item);
+          let detailsHtml = '<td colspan="2"><div class="card details-scroll"><div class="card-body">';
+          Object.entries(item).forEach(([key, value]) => {
+            detailsHtml += `<p><strong>${key}:</strong> ${renderDetails(key, value)}</p>`;
+          });
+          detailsHtml += '</div></div></td>';
+          detailsRow.innerHTML = detailsHtml;
+          tableBody.appendChild(row);
+          tableBody.appendChild(detailsRow);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  </script>
+</body>
+</html>

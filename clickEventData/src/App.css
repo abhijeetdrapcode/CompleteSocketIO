@@ -1,0 +1,13 @@
+/* Light Theme */
+.light-theme {
+  /* Light theme styles */
+  background-color: #ffffff; /* Example light background color */
+  color: #000000; /* Example light text color */
+}
+
+/* Dark Theme */
+.dark-theme {
+  /* Dark theme styles */
+  background-color: #333333; /* Example dark background color */
+  color: #ffffff; /* Example dark text color */
+}

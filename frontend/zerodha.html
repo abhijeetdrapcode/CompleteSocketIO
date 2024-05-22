@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zerodha</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      background-color: #1a202c;
+      padding: 1rem;
+      color: white;
+    }
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      padding: 0 15px;
+    }
+    .hero {
+      background-color: #1a202c;
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .hero h1 {
+      font-size: 3rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+    }
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin: 20px;
+      padding: 20px;
+      width: 300px;
+    }
+    .card img {
+      width: 100%;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .card h3 {
+      margin: 15px 0;
+    }
+    .footer {
+      background-color: #1a202c;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo">
+      <a href="#">Zerodha</a>
+    </div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Welcome to Zerodha</h1>
+    <p>Invest in stocks, mutual funds, and more</p>
+  </div>
+
+  <div class="content">
+    <div class="card">
+      <img src="https://www.zerodha.com/static/images/pages/investments/stocks.png" alt="Investment">
+      <h3>Investments</h3>
+      <p>Discover a wide range of investment opportunities.</p>
+    </div>
+    <div class="card">
+      <img src="https://www.zerodha.com/static/images/pages/investments/mutual-funds.png" alt="Mutual Funds">
+      <h3>Mutual Funds</h3>
+      <p>Experience seamless and efficient trading.</p>
+    </div>
+    <div class="card">
+      <img src="https://www.zerodha.com/static/images/pages/investments/gold.png" alt="Gold">
+      <h3>Gold</h3>
+      <p>Manage your portfolio with ease and precision.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2024 Zerodha. All rights reserved.</p>
+  </div>
+  <script src="https://cdn.socket.io/4.3.1/socket.io.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
